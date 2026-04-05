@@ -1,0 +1,361 @@
+/* ============================================================
+   MC Command Panel — Dark Dashboard Theme
+   ============================================================ */
+
+/* ── Variables ── */
+:root {
+    --bg:        #0d1117;
+    --bg2:       #161b22;
+    --bg3:       #21262d;
+    --bg4:       #2d333b;
+    --border:    #30363d;
+    --accent:    #58a6ff;
+    --accent-h:  #79b8ff;
+    --danger:    #f85149;
+    --danger-h:  #ff6e6e;
+    --success:   #3fb950;
+    --warning:   #d29922;
+    --text:      #c9d1d9;
+    --text2:     #8b949e;
+    --text3:     #484f58;
+    --mono:      'Cascadia Code', 'Fira Code', 'Consolas', monospace;
+    --sans:      'Segoe UI', system-ui, -apple-system, sans-serif;
+    --radius:    6px;
+    --radius-lg: 12px;
+
+    /* Level badge colours */
+    --c0: #3fb950; --c0-bg: rgba(63,185,80,.15);
+    --c1: #58a6ff; --c1-bg: rgba(88,166,255,.12);
+    --c2: #d29922; --c2-bg: rgba(210,153,34,.15);
+    --c3: #ffa657; --c3-bg: rgba(255,166,87,.13);
+    --c4: #f85149; --c4-bg: rgba(248,81,73,.13);
+    --cx: #bc8cff; --cx-bg: rgba(188,140,255,.13);
+}
+
+/* ── Reset ── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { height: 100%; }
+body { font-family: var(--sans); background: var(--bg); color: var(--text);
+       font-size: 14px; line-height: 1.5; }
+button { font-family: inherit; cursor: pointer; border: none; background: none;
+         transition: background .15s, color .15s, border-color .15s, opacity .15s; }
+input  { font-family: inherit; }
+label  { display: block; color: var(--text2); font-size: 12px; margin-bottom: 4px; }
+small  { font-size: 11px; }
+
+.hidden { display: none !important; }
+.view   { min-height: 100vh; }
+
+/* ============================================================
+   Overlay
+   ============================================================ */
+.overlay {
+    position: fixed; inset: 0;
+    background: rgba(0,0,0,.6);
+    backdrop-filter: blur(3px);
+    z-index: 100;
+}
+
+/* ============================================================
+   Modal
+   ============================================================ */
+.modal {
+    position: fixed; inset: 0; z-index: 101;
+    display: flex; align-items: center; justify-content: center;
+    padding: 1rem;
+}
+.modal-box {
+    background: var(--bg2); border: 1px solid var(--border);
+    border-radius: var(--radius-lg); padding: 1.75rem;
+    width: 100%; max-width: 460px;
+    box-shadow: 0 24px 64px rgba(0,0,0,.7);
+}
+.modal-title {
+    font-size: 15px; font-weight: 700;
+    margin-bottom: 1rem; color: var(--text);
+}
+.modal-desc { color: var(--text2); font-size: 13px; margin-bottom: 1.1rem; }
+.modal-footer {
+    display: flex; gap: .6rem; justify-content: flex-end;
+    margin-top: 1.5rem; flex-wrap: wrap;
+}
+
+.form-row { margin-bottom: 1rem; }
+.form-row input { width: 100%; margin-top: 0; }
+
+.checkbox-row { margin-bottom: .8rem; }
+.checkbox-label {
+    display: flex; align-items: center; gap: .55rem;
+    cursor: pointer; color: var(--text); font-size: 13px;
+}
+.checkbox-label input[type="checkbox"] {
+    width: 15px; height: 15px;
+    accent-color: var(--accent); cursor: pointer; flex-shrink: 0;
+}
+
+.warn-box {
+    background: rgba(210,153,34,.12); border: 1px solid rgba(210,153,34,.35);
+    border-radius: var(--radius); padding: .5rem .8rem;
+    font-size: 12px; color: var(--warning); margin-bottom: .8rem;
+}
+.hint { font-size: 11px; color: var(--text3); margin-top: -6px; margin-bottom: 1rem; }
+.hint code {
+    background: var(--bg3); color: var(--text2);
+    padding: .1em .35em; border-radius: 3px; font-family: var(--mono);
+}
+.error-msg { color: var(--danger); font-size: 12px; margin-top: .5rem; }
+
+/* ============================================================
+   Inputs
+   ============================================================ */
+input[type="text"], input[type="password"] {
+    width: 100%; padding: .55rem .8rem;
+    background: var(--bg3); border: 1px solid var(--border);
+    border-radius: var(--radius); color: var(--text);
+    font-size: 13px; outline: none; margin-bottom: .9rem;
+    transition: border-color .2s;
+}
+input[type="text"]:focus, input[type="password"]:focus { border-color: var(--accent); }
+
+/* ============================================================
+   Buttons
+   ============================================================ */
+.btn-primary {
+    background: var(--accent); color: #fff; font-weight: 600;
+    padding: .58rem 1.2rem; border-radius: var(--radius); font-size: 13px;
+    width: 100%; margin-top: .25rem;
+}
+.btn-primary:hover { background: var(--accent-h); }
+.btn-primary.btn-sm { width: auto; margin-top: 0; padding: .45rem 1rem; font-size: 12px; }
+
+.btn-secondary {
+    background: var(--bg3); color: var(--text);
+    border: 1px solid var(--border); border-radius: var(--radius);
+    padding: .48rem 1rem; font-size: 13px;
+}
+.btn-secondary:hover { border-color: var(--accent); color: var(--accent); }
+
+.btn-ghost {
+    background: transparent; color: var(--text2);
+    border: 1px solid var(--border); border-radius: var(--radius);
+    padding: .48rem 1rem; font-size: 13px;
+}
+.btn-ghost:hover { color: var(--text); border-color: var(--text2); }
+
+.btn-danger-outline {
+    background: transparent; color: var(--danger);
+    border: 1px solid var(--danger); border-radius: var(--radius);
+    padding: .48rem 1rem; font-size: 13px;
+}
+.btn-danger-outline:hover { background: var(--danger); color: #fff; }
+
+.btn-icon {
+    background: var(--bg3); border: 1px solid var(--border);
+    border-radius: var(--radius); width: 32px; height: 32px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 16px; color: var(--text2);
+}
+.btn-icon:hover { color: var(--accent); border-color: var(--accent); }
+
+.btn-link { color: var(--text2); font-size: 12px; padding: .35rem; width: 100%; }
+.btn-link:hover { color: var(--accent); }
+
+/* ============================================================
+   Login view
+   ============================================================ */
+#view-login {
+    display: flex; align-items: center; justify-content: center;
+    background: radial-gradient(ellipse 80% 50% at 50% -20%, #1c2d4a, var(--bg));
+}
+.login-box {
+    background: var(--bg2); border: 1px solid var(--border);
+    border-radius: var(--radius-lg); padding: 2.2rem;
+    width: 100%; max-width: 360px;
+    box-shadow: 0 24px 72px rgba(0,0,0,.75);
+}
+.login-logo { text-align: center; margin-bottom: 2rem; }
+.logo-icon { font-size: 2.5rem; }
+.login-logo h1 { font-size: 1.3rem; font-weight: 700; margin-top: .35rem; }
+.login-subtitle { font-size: 12px; color: var(--text2); margin-top: .2rem; }
+
+/* ============================================================
+   Top navigation bar
+   ============================================================ */
+.topbar {
+    background: var(--bg2); border-bottom: 1px solid var(--border);
+    padding: .6rem 1.2rem;
+    display: flex; align-items: center; justify-content: space-between;
+    position: sticky; top: 0; z-index: 10;
+}
+.topbar-left   { display: flex; align-items: center; gap: .5rem; font-weight: 700; }
+.topbar-icon   { font-size: 18px; }
+.topbar-title  { font-size: 15px; }
+.topbar-right  { display: flex; align-items: center; gap: .75rem; }
+.url-badge {
+    font-family: var(--mono); font-size: 11px; color: var(--text3);
+    background: var(--bg3); border: 1px solid var(--border);
+    padding: .2rem .5rem; border-radius: 4px;
+    max-width: 240px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+}
+
+/* ============================================================
+   Panel body
+   ============================================================ */
+.panel-body { padding: 1.25rem 1.5rem; max-width: 1440px; margin: 0 auto; }
+
+/* ============================================================
+   Tabs
+   ============================================================ */
+.tabs {
+    display: flex; gap: .2rem;
+    border-bottom: 1px solid var(--border); margin-bottom: 1.25rem;
+}
+.tab {
+    padding: .55rem 1.1rem; font-size: 13px; font-weight: 500; color: var(--text2);
+    border-bottom: 2px solid transparent; margin-bottom: -1px;
+    border-radius: var(--radius) var(--radius) 0 0;
+}
+.tab:hover { color: var(--text); }
+.tab.active { color: var(--accent); border-bottom-color: var(--accent); font-weight: 600; }
+
+/* ============================================================
+   Toolbar
+   ============================================================ */
+.toolbar {
+    display: flex; gap: .75rem; align-items: center;
+    flex-wrap: wrap; margin-bottom: 1rem;
+}
+.search-input {
+    flex: 1; min-width: 160px; padding: .5rem .8rem;
+    background: var(--bg2); border: 1px solid var(--border);
+    border-radius: var(--radius); color: var(--text);
+    font-size: 13px; outline: none; margin-bottom: 0;
+}
+.search-input:focus { border-color: var(--accent); }
+.filter-group { display: flex; gap: .35rem; align-items: center; flex-wrap: wrap; }
+.filter-label { font-size: 12px; color: var(--text2); }
+.filter-btn {
+    background: var(--bg3); color: var(--text2);
+    border: 1px solid var(--border); border-radius: 20px;
+    padding: .28rem .7rem; font-size: 11px; transition: all .15s;
+}
+.filter-btn:hover { border-color: var(--accent); color: var(--accent); }
+.filter-btn.active { background: var(--accent); color: #fff; border-color: var(--accent); }
+.filter-btn.level-0.active { background: var(--c0); border-color: var(--c0); }
+.filter-btn.level-1.active { background: var(--c1); border-color: var(--c1); }
+.filter-btn.level-2.active { background: var(--c2); border-color: var(--c2); color: #000; }
+.filter-btn.level-3.active { background: var(--c3); border-color: var(--c3); color: #000; }
+.filter-btn.level-4.active { background: var(--c4); border-color: var(--c4); }
+.filter-btn.level-custom.active { background: var(--cx); border-color: var(--cx); }
+
+/* ============================================================
+   Stats bar
+   ============================================================ */
+.stats-bar {
+    background: var(--bg2); border: 1px solid var(--border);
+    border-radius: var(--radius); padding: .5rem 1rem;
+    margin-bottom: 1rem; font-size: 12px; color: var(--text2);
+    display: flex; gap: 1.25rem; flex-wrap: wrap; align-items: center;
+}
+.stats-bar strong { color: var(--text); }
+
+/* ============================================================
+   Command tree
+   ============================================================ */
+.tree-wrap {
+    background: var(--bg2); border: 1px solid var(--border);
+    border-radius: var(--radius); overflow: hidden;
+}
+.loading-msg { padding: 2.5rem; text-align: center; color: var(--text3); }
+
+/* Each node row */
+.tree-row {
+    display: flex; align-items: center; gap: .45rem;
+    padding: .42rem 1rem; cursor: pointer;
+    transition: background .08s; user-select: none;
+    border-bottom: 1px solid var(--border);
+}
+.tree-row:last-child { border-bottom: none; }
+.tree-row:hover { background: var(--bg3); }
+
+.tree-chevron {
+    font-size: 9px; color: var(--text3); width: 12px; flex-shrink: 0;
+    transition: transform .15s; display: inline-block;
+}
+.tree-row.expanded > .tree-chevron { transform: rotate(90deg); }
+.tree-row .no-chevron { width: 12px; flex-shrink: 0; }
+
+.cmd-slash { font-family: var(--mono); font-size: 13px; color: var(--text3); }
+.cmd-name  { font-family: var(--mono); font-size: 13px; font-weight: 600; color: var(--text); }
+.cmd-name.arg { color: var(--text2); font-weight: 400; font-style: italic; }
+
+/* Level badges */
+.lvl-badge {
+    font-size: 10px; font-weight: 700; padding: .12rem .4rem;
+    border-radius: 4px; letter-spacing: .03em; flex-shrink: 0;
+}
+.lvl-0  { background: var(--c0-bg); color: var(--c0); }
+.lvl-1  { background: var(--c1-bg); color: var(--c1); }
+.lvl-2  { background: var(--c2-bg); color: var(--c2); }
+.lvl-3  { background: var(--c3-bg); color: var(--c3); }
+.lvl-4  { background: var(--c4-bg); color: var(--c4); }
+.lvl--1 { background: var(--cx-bg); color: var(--cx); }
+
+/* Blocked badge */
+.blocked-badge {
+    font-size: 10px; padding: .1rem .38rem; border-radius: 4px; flex-shrink: 0;
+    background: rgba(248,81,73,.14); color: var(--danger); font-weight: 700;
+}
+
+/* Quick rule button (shows on hover) */
+.btn-quick-rule {
+    margin-left: auto; background: none; color: var(--text3);
+    border: 1px solid transparent; font-size: 11px;
+    padding: .18rem .5rem; border-radius: 4px;
+    opacity: 0; transition: opacity .12s, color .12s, border-color .12s;
+}
+.tree-row:hover .btn-quick-rule { opacity: 1; }
+.btn-quick-rule:hover { color: var(--accent); border-color: var(--accent); }
+
+/* Children container */
+.tree-children.hidden { display: none; }
+
+/* ============================================================
+   Rules table
+   ============================================================ */
+.rules-table {
+    width: 100%; border-collapse: collapse;
+    background: var(--bg2); border: 1px solid var(--border); border-radius: var(--radius);
+    overflow: hidden;
+}
+.rules-table th {
+    text-align: left; padding: .65rem 1rem; font-size: 11px;
+    font-weight: 600; color: var(--text2); background: var(--bg3);
+    border-bottom: 1px solid var(--border); text-transform: uppercase; letter-spacing: .05em;
+}
+.rules-table td { padding: .65rem 1rem; font-size: 13px; border-bottom: 1px solid var(--border); }
+.rules-table tr:last-child td { border-bottom: none; }
+.rules-table tr:hover td { background: var(--bg3); }
+.rules-table td:first-child { font-family: var(--mono); font-weight: 600; color: var(--text); }
+
+.tick { color: var(--danger); font-weight: 700; }
+.dash { color: var(--text3); }
+
+.user-tag {
+    display: inline-block; font-family: var(--mono); font-size: 11px;
+    background: var(--bg3); border: 1px solid var(--border);
+    border-radius: 4px; padding: .1rem .4rem; margin: .1rem .15rem .1rem 0;
+}
+
+.rules-empty {
+    text-align: center; padding: 3rem 1rem;
+    color: var(--text3); font-size: 13px; line-height: 1.8;
+}
+
+/* Action button inside table */
+.btn-edit-rule {
+    background: var(--bg3); color: var(--text2);
+    border: 1px solid var(--border); border-radius: 4px;
+    font-size: 11px; padding: .25rem .6rem;
+}
+.btn-edit-rule:hover { color: var(--accent); border-color: var(--accent); }

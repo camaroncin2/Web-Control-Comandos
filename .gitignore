@@ -1,0 +1,23 @@
+# Build outputs
+build/
+out/
+
+# Gradle cache
+.gradle/
+
+# IDE files
+.idea/
+.vscode/
+*.iml
+eclipse/
+run/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# ⚠️ SECURITY: Never commit credentials to Git
+credenciales-equipo.txt
+
+# Forge run directory
+run/
