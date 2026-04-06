@@ -9,6 +9,8 @@ public class ModConfig {
     public static final ForgeConfigSpec SPEC;
     public static final ForgeConfigSpec.IntValue PORT;
     public static final ForgeConfigSpec.ConfigValue<String> ALLOWED_ORIGIN;
+    public static final ForgeConfigSpec.ConfigValue<String> PUBLIC_API_URL;
+    public static final ForgeConfigSpec.ConfigValue<String> FRONTEND_URL;
     public static final ForgeConfigSpec.ConfigValue<List<? extends String>> CREDENTIALS;
 
     static {
@@ -26,6 +28,20 @@ public class ModConfig {
                 "or set your Render URL e.g. https://my-panel.onrender.com"
             )
             .define("allowedOrigin", "*");
+
+        PUBLIC_API_URL = builder
+            .comment(
+                "Public URL of this API, used by /webcommands genlink.",
+                "Example: http://123.45.67.89:8080"
+            )
+            .define("publicApiUrl", "");
+
+        FRONTEND_URL = builder
+            .comment(
+                "URL of your Render frontend, used by /webcommands genlink.",
+                "Example: https://web-control-comands.onrender.com"
+            )
+            .define("frontendUrl", "");
 
         CREDENTIALS = builder
             .comment(

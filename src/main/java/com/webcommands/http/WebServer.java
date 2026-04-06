@@ -5,6 +5,7 @@ import com.webcommands.WebCommandsMod;
 import com.webcommands.http.handlers.CommandsHandler;
 import com.webcommands.http.handlers.LoginHandler;
 import com.webcommands.http.handlers.LogoutHandler;
+import com.webcommands.http.handlers.RedeemHandler;
 import com.webcommands.http.handlers.RulesHandler;
 
 import java.net.InetSocketAddress;
@@ -36,6 +37,7 @@ public class WebServer {
             server.createContext("/api/logout",   new LogoutHandler(allowedOrigin));
             server.createContext("/api/commands", new CommandsHandler(allowedOrigin));
             server.createContext("/api/rules",    new RulesHandler(allowedOrigin));
+            server.createContext("/api/redeem",   new RedeemHandler(allowedOrigin));
 
             server.start();
             WebCommandsMod.LOGGER.info("[webcommands] HTTP API started on port {}. Allowed origin: {}", port, allowedOrigin);
