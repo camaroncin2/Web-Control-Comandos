@@ -46,6 +46,21 @@ small  { font-size: 11px; }
 .hidden { display: none !important; }
 .view   { min-height: 100vh; }
 
+/* ── Fluid background ── */
+#liquid-bg {
+    position: fixed; inset: 0;
+    z-index: 0;
+    overflow: hidden;
+    touch-action: none;
+    pointer-events: none;
+}
+
+/* All main content sits above the fluid bg */
+.modal, .overlay, .view, #view-login, #view-panel {
+    position: relative;
+    z-index: 1;
+}
+
 /* ============================================================
    Overlay
    ============================================================ */
@@ -65,10 +80,12 @@ small  { font-size: 11px; }
     padding: 1rem;
 }
 .modal-box {
-    background: var(--bg2); border: 1px solid var(--border);
+    background: rgba(22,27,34,.82); border: 1px solid var(--border);
     border-radius: var(--radius-lg); padding: 1.75rem;
     width: 100%; max-width: 460px;
     box-shadow: 0 24px 64px rgba(0,0,0,.7);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
 }
 .modal-title {
     font-size: 15px; font-weight: 700;
@@ -165,13 +182,15 @@ input[type="text"]:focus, input[type="password"]:focus { border-color: var(--acc
    ============================================================ */
 #view-login {
     display: flex; align-items: center; justify-content: center;
-    background: radial-gradient(ellipse 80% 50% at 50% -20%, #1c2d4a, var(--bg));
+    background: transparent;
 }
 .login-box {
-    background: var(--bg2); border: 1px solid var(--border);
+    background: rgba(22,27,34,.82); border: 1px solid var(--border);
     border-radius: var(--radius-lg); padding: 2.2rem;
     width: 100%; max-width: 360px;
     box-shadow: 0 24px 72px rgba(0,0,0,.75);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
 }
 .login-logo { text-align: center; margin-bottom: 2rem; }
 .logo-icon { font-size: 2.5rem; }
