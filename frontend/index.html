@@ -6,6 +6,7 @@
     <title>MC Command Panel</title>
     <link rel="stylesheet" href="style.css?v=4">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 </head>
 <body>
 
@@ -19,12 +20,12 @@
     <div class="modal-box">
         <div class="modal-title">&#9881; Configuración inicial</div>
         <p class="modal-desc">
-            Ingresa la URL donde el servidor Minecraft está corriendo el mod.
+            Pega el <strong>código de conexión</strong> generado con <code>/webcommands genlink</code> en la consola del servidor.
         </p>
-        <label for="input-api-url">URL de la API del servidor</label>
-        <input type="text" id="input-api-url" placeholder="http://tuservidor.com:8080" autocomplete="off">
-        <p class="hint">Ejemplo: <code>http://123.45.67.89:8080</code> o <code>http://miservidor.ddns.net:8080</code></p>
-        <button id="btn-save-url" class="btn-primary">Guardar y continuar</button>
+        <label for="input-connect-code">Código de conexión</label>
+        <input type="text" id="input-connect-code" placeholder="Pega el código aquí..." autocomplete="off" spellcheck="false">
+        <p class="hint">En la consola del servidor escribe: <code>/webcommands genlink</code></p>
+        <button id="btn-connect" class="btn-primary">Conectar</button>
         <div id="setup-error" class="error-msg hidden"></div>
     </div>
 </div>
